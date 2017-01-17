@@ -112,6 +112,13 @@ Mounting custom config and query files can be done like this:
 $ docker run -it --rm $(pwd)/config.json:/tmp/config.json $(pwd)/query.sparql:/tmp/query.sparql ldf-client http://fragments.dbpedia.org/2015/en -f /tmp/query.sparql -c /tmp/config.json
 ```
 
+### GeoSPARQL support
+Support for client-side processing of GeoSPARQL functions is written by [Christophe Debruyne](http://www.christophedebruyne.be/). Install this branch from source for GeoSPARQL support. The `queries-osi` folder contains several example queries for OSi's Triple Pattern Fragment, available at http://vma01.adaptcentre.ie/. For instance, to obtain labels of of Irish counties that touch at the border, run:
+
+```bash
+$ bin/ldf-client http://vma01.adaptcentre.ie/boundaries-default queries-osi/irish-counties-touching-labels.sparql
+```
+
 ## License
 The Linked Data Fragments client is written by [Ruben Verborgh](http://ruben.verborgh.org/) and colleagues.
 

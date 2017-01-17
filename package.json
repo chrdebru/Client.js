@@ -34,7 +34,10 @@
     "parse-link-header": "^0.4.1",
     "setimmediate": "^1.0.4",
     "sparqljs": "^1.3.0",
-    "uritemplate": "^0.3.0"
+    "uritemplate": "^0.3.0",
+    "terraformer": "1.0.7",
+	"terraformer-wkt-parser": "1.1.2",
+    "@turf/turf": "3.7.0"
   },
   "optionalDependencies": {
     "xml": ">=1.0.0"
