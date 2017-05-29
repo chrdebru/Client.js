@@ -3,3 +3,4 @@ docs
 config.json
 *.log
 ldf-client-browser.js
+.idea

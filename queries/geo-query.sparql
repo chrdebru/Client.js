@@ -1,0 +1,29 @@
+PREFIX spatial:<http://jena.apache.org/spatial#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX geo:<http://www.opengis.net/ont/geosparql#>
+PREFIX gn:<http://www.geonames.org/ontology#>
+PREFIX foaf:<http://xmlns.com/foaf/0.1/>
+PREFIX geof:<http://www.opengis.net/def/function/geosparql/>
+PREFIX loticoowl:<http://www.lotico.com/ontology/>
+
+SELECT  ?q
+WHERE {
+
+    ?x geo:hasGeometry ?y .
+
+    ?y rdf:type geo:Geometry .
+
+    ?y geo:asWKT ?z .
+
+    ?x rdfs:label ?q .
+
+    FILTER(
+
+    geof:sfWithin(?z,"POLYGON((-10.382080078125 54.271639968447985,-5.965576171875 54.271639968447985,-5.965576171875 51.6180165487737,-10.382080078125 51.6180165487737,-10.382080078125 54.271639968447985))"^^geo:wktLiteral)
+
+
+
+    )
+
+} ORDER BY ?q

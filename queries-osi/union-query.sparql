@@ -1,0 +1,23 @@
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX osi: <http://ontologies.geohive.ie/osi#>
+
+SELECT ?c1l ?c2l {
+  ?c1 a osi:County .
+  ?c1 rdfs:label ?c1l .
+  ?c1 geo:hasGeometry ?g1 .
+
+  ?c2 a osi:County .
+  ?c2 rdfs:label ?c2l .
+  ?c2 geo:hasGeometry ?g2 .
+
+  FILTER (?c1 != ?c2)
+  FILTER langMatches( lang(?c1l), "en" )
+  FILTER langMatches( lang(?c2l), "en" )
+
+  ?g1 geo:asWKT ?w1 .
+  ?g2 geo:asWKT ?w2 .
+
+  FILTER(geof:sfWithin(?w1, geof:union(?w1,?w2)))
+}
+
