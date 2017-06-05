@@ -1,0 +1,14 @@
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX opengis: <http://www.opengis.net/def/uom/OGC/1.0/>
+
+SELECT ?c1 {
+
+  ?c1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://geovocab.org/geometry#Geometry> .
+
+  ?c1 <http://www.opengis.net/rdf#asWKT> ?w1 .
+
+  FILTER(geof:distance(?w1,("POINT(36.1569158 51.7441615)"^^<http://www.opengis.net/rdf#WKTLiteral>),opengis:metre)<1000)
+
+}
+
