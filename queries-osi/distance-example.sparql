@@ -1,0 +1,22 @@
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX ontology: <http://www.geonames.org/ontology#>
+PREFIX opengis: <http://www.opengis.net/def/uom/OGC/1.0/>
+
+SELECT ?l1 {
+
+  ?athens ontology:name "Athens" .
+
+  ?athens ontology:hasGeometry ?g1 .
+
+  ?g1 ontology:asWKT ?w1 .
+
+  ?x1 ontology:name ?l1 .
+
+  ?x1 ontology:hasGeometry ?g2 .
+
+  ?g2 ontology:asWKT ?w2 .
+
+  FILTER(geof:distance(?w1,?w2,opengis:metre)<5000)
+
+}

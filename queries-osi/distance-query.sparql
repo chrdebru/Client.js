@@ -1,0 +1,15 @@
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX opengis: <http://www.opengis.net/def/uom/OGC/1.0/>
+
+SELECT ?c1 (geof:distance(?w1,?w2,opengis:metre) AS ?RET) {
+
+  ?c1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.opengis.net/ont/geosparql#Geometry> .
+
+  ?c1 <http://www.opengis.net/ont/geosparql#asWKT> ?w1 .
+
+  ?c2 <http://www.opengis.net/ont/geosparql#asWKT> ?w2 .
+
+  FILTER(?w1!=?w2)
+}
+
